@@ -28,11 +28,15 @@ int main(int argc, char *argv[]) {
     } 
     else if (strcmp(sortType, "bubble") == 0) {
         cout << "\n=== Bubble Sort ===" << endl;
-        sort(a, N);
+        bubble_sort(a, N);
     } 
     else if (strcmp(sortType, "selection") == 0) {
         cout << "\n=== Selection Sort ===" << endl;
         select_sort(a, N);
+    }
+    else if (strcmp(sortType, "shell") == 0) {
+    cout << "\n=== Shell Sort ===" << endl;
+    shell_sort(a, N);
     }
 
     cout << "After sorting: ";

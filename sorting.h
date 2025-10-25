@@ -5,6 +5,7 @@ void display(int *a,int N);
 void bubble_sort(int *a,int N);
 void select_sort(int *a,int N);
 void insert_sort(int *a,int N);
+void shell_sort(int *a,int N);
 
 void swap(int &a, int &b){
     int temp = a;
@@ -64,5 +65,20 @@ void insert_sort(int *a, int N){
         }
         a[i + 1] = value;
         cout << "==============" << endl;
+    }
+}
+
+void shell_sort(int *a, int N) {
+    for (int gap = N / 2; gap > 0; gap /= 2) {
+        for (int i = gap; i < N; i++) {
+            int temp = a[i];
+            int j;
+            for (j = i; j >= gap && a[j - gap] > temp; j -= gap) {
+                a[j] = a[j - gap];
+                display(a, N);
+            }
+            a[j] = temp;
+        }
+        cout << "===============" << endl;
     }
 }
