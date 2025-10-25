@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string.h>
 #include "sorting.h"
+#include <stdlib.h>
+#include <cstdlib>
 
 int main(int argc, char *argv[]) {
 
@@ -14,15 +16,13 @@ int main(int argc, char *argv[]) {
     N = argc - 2;      
     a = new int[N];
     for(i = 0; i < N; i++){
-        *a = atoi(argv[i + 2]); 
-        a++;
+        a[i] = atoi(argv[i + 2]); 
     }
-    a -= N;
 
     cout << "Before sorting: ";
     display(a, N);
 
-    if (strcmp(sortType, "insert") == 0) {
+    if (strcmp(sortType, "insertion") == 0) {
         cout << "\n=== Insertion Sort ===" << endl;
         insert_sort(a, N);
     } 
