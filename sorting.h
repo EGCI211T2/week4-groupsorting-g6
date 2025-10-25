@@ -1,51 +1,68 @@
-// selection sort function module in C
+#include <iostream>
+using namespace std;
+void swap(int &a,int &b);
+void display(int *a,int N);
+void bubble_sort(int *a,int N);
+void select_sort(int *a,int N);
+void insert_sort(int *a,int N);
 
-void display(int a[],int n){
-
-    int i;
-
-    for(i=0;i<n;i++)
-        printf("%5d",a[i]);
-    printf("\n");
-  
+void swap(int &a, int &b){
+    int temp = a;
+    a = b;
+    b = temp;
 }
 
-void selectionSort(int data[], int length) 
-{ 
-	int i, j, m, mi; 
-	
-     display(data,length);
-     
-	
-} 
-
-
-
-void insertion(int a[],int n){
-
-
+void display(int *a, int N){
+    for(int i = 0; i < N; i++){
+        cout << a[i] << " ";
+    }
+    cout << endl;
 }
 
-void swap(int *a,int *b){
- int temp;
-  temp=*a;
-  *a=*b;
-  *b=temp;
-  
-}
-
-void bubbleSort(int a[],int n){
-
-int i,j;
-int sorted;
-// how may pair to compare?
-for(j=1;j<=n-1;j++){
- 
-  display(a,n);
- }
-  
+void bubble_sort(int *a, int N){
+    int i, j, sorted;
+    for(j = N - 1; j > 0; j--){
+        sorted = 0;
+        for(i = 0; i < j; i++){
+            if(a[i] > a[i + 1]){
+                swap(a[i], a[i + 1]);
+                sorted = 1;
+            }
+            display(a, N);
+        }
+        cout << "===============" << endl;
+        if(sorted == 0) break; 
+    }
 }
 
 
+void select_sort(int *a, int N){
+    int i, j, mi;
+    for(j = 0; j < N; j++){
+        mi = j;
+        for(i = j + 1; i < N; i++){
+            if(a[mi] > a[i]){
+                mi = i;
+            }
+        }
+        swap(a[j], a[mi]);
+        display(a, N);
+    }
+}
 
 
+void insert_sort(int *a, int N){
+    int i, j;
+    for(j = 1; j < N; j++){
+        int value = a[j];
+        for(i = j - 1; i >= 0; i--){
+            if(value < a[i])
+                a[i + 1] = a[i];
+            else
+                break;
+            display(a, N);
+        }
+        a[i + 1] = value;
+        cout << "==============" << endl;
+    }
+}
